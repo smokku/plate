@@ -1,0 +1,29 @@
+{
+    "plugins": [
+      "@babel/plugin-proposal-export-default-from",
+      ["@babel/plugin-proposal-optional-chaining", { "loose": false }],
+      ["@babel/plugin-proposal-decorators", { "legacy": true }],
+      ["@babel/plugin-proposal-class-properties", { "loose": false }]
+    ],
+    "presets": [
+      "@babel/preset-flow",
+      "@babel/preset-react",
+      ["@babel/preset-env", {
+        "modules": false,
+        "targets": {
+          "browsers": ["> 2%", "ie 11", "safari >= 9"]
+        }
+      }]
+    ],
+    "env": {
+      "test": {
+        "presets": [
+          ["@babel/preset-env", {
+            "targets": {
+              "node": "current"
+            }
+          }]
+        ]
+      }
+    }
+  }
