@@ -3,19 +3,18 @@ const webpack = require('webpack')
 const path = require('path')
 
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const autoprefixer = require('autoprefixer')
 
 const nodeEnv = process.env.NODE_ENV || 'development'
 
 const isProduction = nodeEnv === 'production'
 
-const jsSourcePath = path.join(__dirname, './example')
+const jsSourcePath = path.join(__dirname, './src')
 const buildPath =  path.join(__dirname, './build')
 
 const plugins = [
   new webpack.NamedModulesPlugin(),
   new HtmlWebpackPlugin({
-    template: path.join(__dirname, './example/index.html'),
+    template: path.join(__dirname, 'src', 'index.html'),
     path: buildPath,
     filename: 'index.html',
   }),
@@ -28,36 +27,6 @@ const plugins = [
   new webpack.HotModuleReplacementPlugin()
 ]
 
-
-const scssRule = [
-  'style-loader',
-  {
-    loader: 'css-loader',
-    options: {
-      sourceMap: !isProduction,
-    },
-  },
-  {
-    loader: 'postcss-loader',
-    options: {
-      plugins: [
-        autoprefixer({
-          browsers: [
-            'last 3 version',
-            'ie >= 11',
-          ],
-        }),
-      ],
-    },
-  },
-  {
-    loader: 'sass-loader',
-    options: {
-      sourceMap: true,
-    },
-  },
-]
-
 const rules = [
   {
     test: /\.(js|jsx)$/,
@@ -65,24 +34,12 @@ const rules = [
     use: 'babel-loader',
   },
   {
-    test: /\.s?css$/,
-    exclude: /node_modules/,
-    oneOf: [
+    test: /\.css$/,
+    use: [
       {
-        include: path.resolve(__dirname, 'src/example'),
-        use: scssRule.map(item => item.loader !== 'css-loader' ? item : {
-          ...item,
-          options: {
-            ...item.options,
-            modules: true,
-            camelCase: 'only',
-            localIdentName: '[path][name]__[local]--[hash:base64:5]',
-          },
-        }),
+        loader: 'style-loader',
       },
-      {
-        use: scssRule,
-      },
+      'css-loader',
     ],
   },
 ]
@@ -118,7 +75,7 @@ module.exports = {
     rules,
   },
   resolve: {
-    extensions: ['.webpack-loader.js', '.web-loader.js', '.loader.js', '.js', '.jsx', '.scss'],
+    extensions: ['.webpack-loader.js', '.web-loader.js', '.loader.js', '.js', '.jsx', '.css', '.min.css'],
     modules: [
       path.resolve(__dirname, 'node_modules'),
       jsSourcePath,

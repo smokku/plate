@@ -20,7 +20,6 @@ export {selectors, actions} from '../../'
 let store
 
 export default function create(
-  history: BrowserHistory,
   schema: PlateSchema,
   client: {[string]: (string, {}) => AxiosPromise<*>}
 ) {

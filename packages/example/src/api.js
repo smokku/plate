@@ -10,37 +10,47 @@ const client = axios.create({
   timeout,
 })
 
-const API_URL = ''
+const API_URL = 'https://jsonplaceholder.typicode.com'
 /* ************************************************************************** */
 
-export const asset = new schema.Entity('asset', {}) // IAR asset
+export const task = new schema.Entity('task', {}) // IAR asset
 
 
 const APISchema = () => ({
-  assets: {
+  tasks: {
     GetAll: {
-      url: (query: AssetQuery) =>
-        `${API_URL}/assets?${stringify({
-          q: query,
+      url: (userId: string) =>
+        `${API_URL}/todos?${stringify({
+          userId,
         })}`,
-      schema: {assets: [asset]},
-      returns: ({assets}: {assets: Array<{}>} = {}) => assets,
-      // preReq: token,
+      schema: [task],
+      returns: (tasks: Array<Task>) => tasks
     },
     GetOne: {
       url: (id: string) =>
-        `${API_URL}/assets/${id}`,
-      schema: {asset},
+        `${API_URL}/todos/${id}`,
+      schema: {task},
       selects: (id: *) => id,
-      returns: (result: {asset: Asset} = {}) => result.asset,
-      // preReq: token,
+      returns: (task: Task = {}) => task,
     },
     CreateOne: {
-      url: `${API_URL}/assets`,
+      url: `${API_URL}/todos`,
       method: 'POST',
       data: 0,
-      schema: {asset},
-      // preReq: token,
+      schema: {task},
+    },
+    UpdateOne: {
+      url: (id: string) =>
+      `${API_URL}/todos/${id}`,
+      method: 'PUT',
+      data: 1,
+      schema: {task},
+    },
+    DeleteOne: {
+      url: (id: string) =>
+      `${API_URL}/todos/${id}`,
+      method: 'DELETE',
+      schema: {task},
     },
   }
 })

@@ -10,17 +10,23 @@ import api from './api'
 
 import App from './components/app'
 
-// import styles from './component.scss'
+import 'uikit/dist/css/uikit.min.css'
+import 'uikit/dist/js/uikit-icons.min.js'
+import './index.css'
 
+const USER_ID = 1;
 
-const store = configureStore(history, api.schema(), api.client)
+const store = configureStore(api.schema(), api.client)
 
 const app = (
   <Provider store={store}>
-    <App />
+    <App userId={USER_ID}/>
   </Provider>
 );
 
 const root = document.getElementById('root');
 
-ReactDOM.render(app, root);
+if(root) {
+  ReactDOM.render(app, root);
+}
+
