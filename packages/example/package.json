@@ -1,6 +1,6 @@
 {
   "name": "@smokku/plate-example",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Example project for API Plate.",
   "main": "index.js",
   "scripts": {
@@ -31,7 +31,7 @@
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
-    "@smokku/plate": "^1.0.0",
+    "@smokku/plate": "^1.1.0",
     "autoprefixer": "^9.5.1",
     "axios": "^0.18.1",
     "babel-loader": "^8.0.5",
