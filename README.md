@@ -2,6 +2,8 @@
 
 This is a generic proxy layer to access REST API endpoints via Redux selectors and action creators.
 
+[![CircleCI](https://img.shields.io/circleci/project/github/smokku/plate/master.svg)](https://circleci.com/gh/smokku/plate)
+
 You define schema describing API endpoints, and Plate generates and exports `selectors` and `actions` objects
 to use in Redux `connect()` and `dispatch()`.
 
