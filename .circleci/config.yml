@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  test_and_build:
+    docker:
+      - image: circleci/node
+    steps:
+      - checkout
+      - run: npm install
+      - run: npx lerna bootstrap
+      - run: npx lerna run check
+      - run: npx lerna run test
+      - run: npx lerna run build
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - test_and_build

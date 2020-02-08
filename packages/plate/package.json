@@ -7,9 +7,9 @@
     "test": "tests"
   },
   "scripts": {
+    "check": "flow check",
     "test": "jest",
-    "build": "rollup -c",
-    "flow": "flow check"
+    "build": "rollup -c"
   },
   "repository": {
     "type": "git",
