@@ -1,47 +1,7 @@
 {
-  "name": "plate",
-  "version": "1.0.0",
-  "description": "This is a generic proxy layer to access REST API endpoints via Redux selectors and action creators.",
-  "main": "bundle.js",
-  "directories": {
-    "test": "tests"
-  },
-  "scripts": {
-    "test": "jest",
-    "build": "rollup -c",
-    "flow": "flow check"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/smokku/plate.git"
-  },
-  "keywords": [
-    "rest",
-    "api",
-    "redux",
-    "selector"
-  ],
-  "author": "Tomasz Sterna <tomek@xiaoka.com>",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/smokku/plate/issues"
-  },
-  "homepage": "https://github.com/smokku/plate#readme",
+  "name": "root",
+  "private": true,
   "devDependencies": {
-    "@babel/core": "^7.8.4",
-    "@babel/preset-env": "^7.8.4",
-    "@babel/preset-flow": "^7.8.3",
-    "@rollup/plugin-commonjs": "^11.0.2",
-    "@rollup/plugin-node-resolve": "^7.1.1",
-    "flow-bin": "^0.118.0",
-    "rollup": "^1.31.0",
-    "rollup-plugin-babel": "^4.3.3"
-  },
-  "dependencies": {
-    "axios": "^0.19.2",
-    "lodash": "^4.17.15",
-    "normalizr": "^3.5.0",
-    "redux": "^4.0.5",
-    "seamless-immutable": "^7.1.4"
+    "lerna": "^3.20.2"
   }
 }
