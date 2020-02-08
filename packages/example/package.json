@@ -67,5 +67,6 @@
     "webpack": "^4.30.0",
     "webpack-cli": "^3.3.1",
     "webpack-dev-server": "^3.3.1"
-  }
+  },
+  "gitHead": "e03e2f952f9e738a3c5c24e4d94cd255b594ab1c"
 }

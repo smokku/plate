@@ -45,5 +45,6 @@
     "normalizr": "^3.5.0",
     "redux": "^4.0.5",
     "seamless-immutable": "^7.1.4"
-  }
+  },
+  "gitHead": "e03e2f952f9e738a3c5c24e4d94cd255b594ab1c"
 }
