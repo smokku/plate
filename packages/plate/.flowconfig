@@ -8,6 +8,7 @@
 [libs]
 
 [lints]
+deprecated-utility=off
 
 [options]
 esproposal.optional_chaining=enable

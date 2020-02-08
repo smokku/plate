@@ -22,13 +22,13 @@ import {
 
 import type { ReduxState } from './redux'
 
-export { reducer } from './redux'
+export { reducer, clearStore } from './redux'
 
 export type MethodDescription = {
   url: string | ((...Array<any>) => string),
   method?: 'GET' | 'POST' | 'PUT' | 'DELETE',
   data?: string | number | ((*) => *),
-  headers?: { [string]: string },
+  headers?: { [string]: mixed },
   schema?: NormalizrSchema,
   selects?: (*) => *,
   returns?: (*) => *,
@@ -239,10 +239,7 @@ export function configure (
             }
 
             const entities = getEntities(state)
-            // $FlowFixMe: Flow does not yet support method or property calls in optional chains.
-            const ret = fromJS(
-              denormalize(result, methodSchema, entities)
-            )?.toJS()
+            const ret = denormalize(result, methodSchema, entities)
 
             return mangle ? mangle(ret) : ret
           }

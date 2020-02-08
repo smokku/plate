@@ -1,21 +1,18 @@
 // @flow
 /* eslint-disable no-underscore-dangle */
-import {createStore, combineReducers, applyMiddleware, compose} from 'redux'
+import { createStore, combineReducers, applyMiddleware, compose, type Dispatch } from 'redux'
 import thunk from 'redux-thunk'
-
-import type {AxiosPromise} from 'axios'
-import type {Dispatch} from 'redux'
-
-import configure from '../../'
-import type {PlateSchema} from '../../'
+import type { AxiosPromise } from 'axios'
 import {
+  configure,
   reducer as plateReducer,
   clearStore as clearPlate,
-} from '../../redux'
-import type {ReduxState, ReduxAction} from '../../redux'
+  type PlateSchema,
+  type ReduxState,
+  type ReduxAction
+} from '@smokku/plate'
 
-
-export {selectors, actions} from '../../'
+export {selectors, actions} from '@smokku/plate'
 
 let store
 

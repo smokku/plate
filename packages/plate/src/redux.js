@@ -3,10 +3,7 @@
 import Immutable, { type Immutable as ImmutableType } from 'seamless-immutable'
 import type { EntityName } from './main'
 
-export type ReduxEntities = ImmutableType<
-  EntityName,
-  ImmutableType<string, mixed>
->
+export type ReduxEntities = ImmutableType<{[EntityName]: ReduxEntities}>
 export type ReduxActionType = string
 export type ReduxAction = {
   type: ReduxActionType,
@@ -23,8 +20,8 @@ export type ReduxStatus = {
 
 export type ReduxInternalState = {
   entities: ReduxEntities,
-  statuses: ImmutableType<string, ReduxStatus>,
-  results: ImmutableType<string, ImmutableType<string, mixed>>
+  statuses: ImmutableType<{[string]: ReduxStatus}>,
+  results: ImmutableType<{[string]: ImmutableType<{[string]: mixed}>}>
 }
 export type ReduxState = {
   plate: ReduxInternalState
@@ -67,7 +64,7 @@ export const getResult = (
     )
   }
   // $FlowFixMe: Flow does not yet support method or property calls in optional chains.
-  return state.plate.results.get(source)?.get(serialize(args))
+  return state.plate.results[source]?.[serialize(args)]
 }
 
 export const SET_STATUS: ReduxActionType = '@@plate/set-status'
@@ -96,7 +93,7 @@ export const getStatus = (
     )
   }
   // $FlowFixMe: Flow does not yet support method or property calls in optional chains.
-  return state.plate.statuses.get(source)?.get(serialize(args))
+  return state.plate.statuses[source]?.[serialize(args)]
 }
 
 export const initialState: ReduxInternalState = {
@@ -118,7 +115,7 @@ export function reducer (
         ...state,
         entities: state.entities.merge(action.payload, {
           deep: false,
-          merger: (oldVal, newVal) => oldVal.merge(newVal, { deep: false })
+          merger: (oldVal, newVal) => oldVal ? oldVal.merge(newVal, { deep: false }) : newVal
         })
       }
 

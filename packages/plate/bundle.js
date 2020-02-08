@@ -3798,6 +3798,13 @@ function mapValues(object, iteratee) {
 var mapValues_1 = mapValues;
 
 var CLEAR_STORE = '@@plate/clear-store';
+var clearStore = function clearStore() {
+  return {
+    type: CLEAR_STORE,
+    source: 'internal',
+    payload: null
+  };
+};
 var ADD_ENTITIES = '@@plate/add-entities';
 var addEntities = function addEntities(source, entities) {
   return {
@@ -3829,7 +3836,7 @@ var getResult = function getResult(state, source, args) {
   } // $FlowFixMe: Flow does not yet support method or property calls in optional chains.
 
 
-  return (_state$plate$results$ = state.plate.results.get(source)) === null || _state$plate$results$ === void 0 ? void 0 : _state$plate$results$.get(serialize(args));
+  return (_state$plate$results$ = state.plate.results[source]) === null || _state$plate$results$ === void 0 ? void 0 : _state$plate$results$[serialize(args)];
 };
 var SET_STATUS = '@@plate/set-status';
 var setStatus = function setStatus(source, args, status, error) {
@@ -3851,7 +3858,7 @@ var getStatus = function getStatus(state, source, args) {
   } // $FlowFixMe: Flow does not yet support method or property calls in optional chains.
 
 
-  return (_state$plate$statuses = state.plate.statuses.get(source)) === null || _state$plate$statuses === void 0 ? void 0 : _state$plate$statuses.get(serialize(args));
+  return (_state$plate$statuses = state.plate.statuses[source]) === null || _state$plate$statuses === void 0 ? void 0 : _state$plate$statuses[serialize(args)];
 };
 var initialState = {
   entities: Immutable({}),
@@ -3871,9 +3878,9 @@ function reducer() {
         entities: state.entities.merge(action.payload, {
           deep: false,
           merger: function merger(oldVal, newVal) {
-            return oldVal.merge(newVal, {
+            return oldVal ? oldVal.merge(newVal, {
               deep: false
-            });
+            }) : newVal;
           }
         })
       });
@@ -4050,7 +4057,7 @@ function configure(store, schema, api) {
       actions[selectorPrefix] = fetchFunction;
 
       selectors[selectorPrefix] = function (state) {
-        var _getStatus, _fromJS;
+        var _getStatus;
 
         for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
           args[_key2 - 1] = arguments[_key2];
@@ -4078,9 +4085,8 @@ function configure(store, schema, api) {
           result = selector.apply(void 0, args);
         }
 
-        var entities = getEntities(state); // $FlowFixMe: Flow does not yet support method or property calls in optional chains.
-
-        var ret = (_fromJS = fromJS(normalizr.denormalize(result, methodSchema, entities))) === null || _fromJS === void 0 ? void 0 : _fromJS.toJS();
+        var entities = getEntities(state);
+        var ret = normalizr.denormalize(result, methodSchema, entities);
         return mangle ? mangle(ret) : ret;
       };
       /* Additional selector to get the request status */
@@ -4165,6 +4171,7 @@ function configure(store, schema, api) {
 }
 
 exports.actions = actions;
+exports.clearStore = clearStore;
 exports.configure = configure;
 exports.reducer = reducer;
 exports.selectors = selectors;
