@@ -1,0 +1,128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Plate fetches all 1`] = `
+Object {
+  "gerbils": Array [
+    Object {
+      "fur": Object {
+        "color": "White",
+        "id": "1",
+        "type": "Fluffy",
+      },
+      "id": "1",
+      "name": "Jerry",
+    },
+    Object {
+      "fur": Object {
+        "color": "White",
+        "id": "1",
+        "type": "Fluffy",
+      },
+      "id": "2",
+      "name": "Terry",
+    },
+    Object {
+      "fur": Object {
+        "color": "Orange",
+        "id": "2",
+      },
+      "id": "3",
+      "name": "Marry",
+    },
+    Object {
+      "id": "4",
+      "name": "Jeshua",
+    },
+  ],
+}
+`;
+
+exports[`Plate fetches one 1`] = `
+Object {
+  "fur": Object {
+    "color": "White",
+    "id": "1",
+  },
+  "id": "2",
+  "name": "Terry",
+}
+`;
+
+exports[`Plate gets one from all 1`] = `
+Object {
+  "fur": Object {
+    "color": "White",
+    "id": "1",
+    "type": "Fluffy",
+  },
+  "id": "2",
+  "name": "Terry",
+}
+`;
+
+exports[`Plate mangles return 1`] = `
+Array [
+  Object {
+    "fur": Object {
+      "color": "White",
+      "id": "1",
+      "type": "Fluffy",
+    },
+    "id": "1",
+    "name": "Jerry",
+  },
+  Object {
+    "fur": Object {
+      "color": "White",
+      "id": "1",
+      "type": "Fluffy",
+    },
+    "id": "2",
+    "name": "Terry",
+  },
+  Object {
+    "fur": Object {
+      "color": "Orange",
+      "id": "2",
+    },
+    "id": "3",
+    "name": "Marry",
+  },
+  Object {
+    "id": "4",
+    "name": "Jeshua",
+  },
+]
+`;
+
+exports[`Plate queries many 1`] = `
+Object {
+  "furs": Array [
+    Object {
+      "color": "White",
+      "id": "1",
+      "type": "Fluffy",
+    },
+    Object {
+      "color": "White",
+      "id": "1",
+      "type": "Fluffy",
+    },
+    Object {
+      "color": "Orange",
+      "id": "2",
+    },
+  ],
+}
+`;
+
+exports[`Plate queries many 2`] = `
+Object {
+  "furs": Array [
+    Object {
+      "color": "Orange",
+      "id": "2",
+    },
+  ],
+}
+`;

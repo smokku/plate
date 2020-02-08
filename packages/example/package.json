@@ -4,7 +4,6 @@
   "description": "Example project for API Plate.",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
     "start": "webpack-dev-server --colors --progress"
   },
   "repository": {

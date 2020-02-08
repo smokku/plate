@@ -187,7 +187,7 @@ export function configure (
                     store.dispatch(setStatus(selectorPrefix, args, 'SUCCESS'))
                     return normalized.result
                   }
-                  // cannot denormalize non-object type - pass on
+                  // cannot normalize non-object type - pass on
                   return responseData
                 },
                 error => {
