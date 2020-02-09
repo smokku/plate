@@ -13,7 +13,7 @@ const client = axios.create({
 const API_URL = 'https://jsonplaceholder.typicode.com'
 /* ************************************************************************** */
 
-export const task = new schema.Entity('task', {}) // IAR asset
+export const task = new schema.Entity('task', {})
 
 
 const APISchema = () => ({

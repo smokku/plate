@@ -11,6 +11,94 @@ Plate uses [normalizr][1] library under the hood, to keep API objects in normali
 
 [1]: https://github.com/paularmstrong/normalizr
 
+## Installation
+
+1. Add package and dependencies to your project:
+
+```sh
+npm install --save @smokku/plate
+npm install --save redux normalizr axios seamless-immutable
+```
+
+2. Add `plate` reducer to your Redux store:
+
+```js
+// store.js
+// ...
+import {reducer as plate} from '@smokku/plate'
+
+// ...
+  const reducers = combineReducers({
+    // ...
+    plate,
+  })
+
+//...
+  store = createStore(reducers, middlewares)
+```
+
+3. Write API definition file:
+
+```js
+// api.js
+import {schema} from 'normalizr'
+
+export const task = new schema.Entity('task', {})
+
+export default {
+  tasks: {
+    getAll: {
+      schema: task,
+      // ...
+}
+```
+
+_For full description of the API Schema [see below](#schema)._
+
+4. Create and configure [Axios](https://github.com/axios/axios#axios-api) client:
+
+```js
+// api.js
+import axios from 'axios'
+
+const timeout = 10000
+const baseURL = 'https://your.api/v1',
+
+export const client = axios.create({
+  timeout,
+  baseURL,
+})
+
+// ...
+```
+
+5. Configure `plate` during application startup:
+
+```js
+// main.js
+import {configure} from '@smokku/plate'
+import store from './store'
+import schema, {client} from './api'
+
+//...
+configure(store, schema, client)
+```
+
+This will create all functions in `selectors` and `actions` exports.
+
+6. Import `selectors` to your component file and use generated functions:
+
+```js
+// component.jsx
+import {selectors} from '@smokku/plate'
+// ...
+@connect(state => ({
+  tasks: selectors.tasksGetAll(state)
+}))
+export default TasksList extends Component {
+// ...
+```
+
 ## Schema
 
 ```
@@ -90,7 +178,7 @@ export default {
 component.jsx:
 
 ```js
-import {selectors, actions} from 'plate'
+import {selectors, actions} from '@smokku/plate'
 
 ...
 
