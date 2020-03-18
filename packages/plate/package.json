@@ -36,7 +36,7 @@
     "flow-bin": "0.120.1",
     "jest": "25.1.0",
     "jest-mock-axios": "3.2.0",
-    "rollup": "2.0.6",
+    "rollup": "2.1.0",
     "rollup-plugin-babel": "4.3.3"
   },
   "dependencies": {
