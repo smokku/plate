@@ -30,7 +30,7 @@
     "@babel/plugin-proposal-optional-chaining": "7.9.0",
     "@babel/preset-env": "7.9.0",
     "@babel/preset-flow": "7.9.0",
-    "@babel/preset-react": "7.9.1",
+    "@babel/preset-react": "7.9.4",
     "@smokku/plate": "^1.1.2",
     "autoprefixer": "9.7.4",
     "axios": "0.19.2",
