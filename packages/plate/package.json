@@ -34,7 +34,7 @@
     "@rollup/plugin-commonjs": "11.0.2",
     "@rollup/plugin-node-resolve": "7.1.1",
     "flow-bin": "0.121.0",
-    "jest": "25.2.4",
+    "jest": "25.2.6",
     "jest-mock-axios": "3.2.0",
     "rollup": "2.1.0",
     "rollup-plugin-babel": "4.4.0"
