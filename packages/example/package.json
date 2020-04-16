@@ -63,7 +63,7 @@
     "redux-thunk": "2.3.0",
     "seamless-immutable": "7.1.4",
     "style-loader": "1.1.4",
-    "uikit": "3.4.0",
+    "uikit": "3.4.1",
     "webpack": "4.42.1",
     "webpack-cli": "3.3.11",
     "webpack-dev-server": "3.10.3"
