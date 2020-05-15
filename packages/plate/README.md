@@ -4,10 +4,38 @@ This is a generic proxy layer to access REST API endpoints via Redux selectors a
 
 [![CircleCI](https://img.shields.io/circleci/project/github/smokku/plate/master.svg)](https://circleci.com/gh/smokku/plate)
 
-You define schema describing API endpoints, and Plate generates and exports `selectors` and `actions` objects
-to use in Redux `connect()` and `dispatch()`.
+You define a simple schema object describing API endpoints, and Plate generates `selector` functions for use in Redux `connect()` calls.
 
-Plate uses [normalizr][1] library under the hood, to keep API objects in normalized (deduplicated) format.
+Then, the magic happens:
+
+1. First time the API endpoint selector is called, Plate finds out that it does not have data loaded - so it triggers the API call and simply returns nothing from the selector.
+2. Then when the API call response arrives it is saved to Redux store.
+3. Updating the Redux store triggers connect()ed components to re-render.
+4. Selector is called again, but this time data _is_ in the Redux store, so the selector returns it.
+5. Component displays data loaded from API (its cache in Redux store).
+
+Plate uses [normalizr][1] library under the hood, to keep API objects in normalized (deduplicated) format. This gives Plate another "magical" feature:
+
+- If one of the API calls updates an entity, all selectors refering to the entity get the update.
+
+This means for example, that if you are displaying a table of Users, and you updateOne user, the table data gets updated automatically.
+
+Selectors are parametrized, so you can give IDs and options to the API calls. API calls are cached by the full selector call signature. So `selectors.usersGetAll()` selector triggers API call only once, but `usersGetOne('userid-1')` and `usersGetOne('userid-2')` will trigger separate calls (also just once each).
+
+How can you force an update of a data loaded in store? (When you have some external knowledge that data needs update.) Plate generates two objects actually:
+
+- `selectors` object having all the selectors generated from API schema;
+- `actions` object, which mirrors the selectors structure, but gives you functions triggering the API calls directly.
+
+Actions are also used to do entity updates via POST/PUT/DELETE calls (i.e. `actions.usersUpdateOne('id1', {locked: false})`). Here's where another neat thing is integrated:
+
+- If your update call returns updated entity data, it gets integrated into Redux store the same way as in GET call.
+
+This means that you don't have to load updated entity data manually.
+
+_But what do you do while the first API call is in progress and selector returns nothing? Or the API call fails?_
+
+Good question. See below documentation for status selectors, like `isProcessing` or `isError`, which you can use to display some message or a spinner in such case.
 
 [1]: https://github.com/paularmstrong/normalizr
 
