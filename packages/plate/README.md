@@ -1,6 +1,6 @@
 # API-Plate
 
-This is a generic proxy layer to access REST API endpoints via Redux selectors and action creators.
+This is a declarative proxy layer to access REST API endpoints via Redux selectors and action creators.
 
 [![CircleCI](https://img.shields.io/circleci/project/github/smokku/plate/master.svg)](https://circleci.com/gh/smokku/plate)
 
@@ -219,3 +219,7 @@ export default User extends Component {
   }
   ...
 ```
+
+## Kudos
+
+- [Tectonic](https://github.com/tonyhb/tectonic) - for inspiration (I just wanted something simpler)
