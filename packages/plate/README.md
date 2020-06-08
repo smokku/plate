@@ -175,6 +175,10 @@ There are additional selectors available, to get the status of specific endpoint
 
 ## Example
 
+For a fully integrated example see [the example package](//github.com/smokku/plate/tree/master/packages/example).
+
+Here are just the minimal steps to get you running.
+
 schema.js:
 
 ```js
