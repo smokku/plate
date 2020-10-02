@@ -53,7 +53,7 @@
     "flow": "0.2.3",
     "html-webpack-plugin": "4.5.0",
     "jest": "25.5.4",
-    "mini-css-extract-plugin": "0.11.2",
+    "mini-css-extract-plugin": "0.11.3",
     "normalizr": "3.6.0",
     "qs": "6.9.4",
     "react": "16.13.1",
