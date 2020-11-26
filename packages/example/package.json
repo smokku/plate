@@ -34,7 +34,7 @@
     "@smokku/plate": "^1.1.2",
     "autoprefixer": "9.8.6",
     "axios": "0.21.0",
-    "babel-loader": "8.2.1",
+    "babel-loader": "8.2.2",
     "css-loader": "3.6.0",
     "eslint": "6.8.0",
     "eslint-config-airbnb": "18.2.1",
