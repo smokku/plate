@@ -41,7 +41,7 @@
     "eslint-config-flowtype-essential": "1.0.0",
     "eslint-config-prettier": "6.15.0",
     "eslint-config-react": "1.1.7",
-    "eslint-import-resolver-webpack": "0.12.2",
+    "eslint-import-resolver-webpack": "0.13.0",
     "eslint-plugin-flowtype": "4.7.0",
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jest": "23.20.0",
