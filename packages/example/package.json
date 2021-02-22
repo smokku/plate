@@ -31,7 +31,7 @@
     "@babel/preset-env": "7.12.17",
     "@babel/preset-flow": "7.12.13",
     "@babel/preset-react": "7.12.13",
-    "@smokku/plate": "^1.1.2",
+    "@smokku/plate": "1.1.2",
     "autoprefixer": "9.8.6",
     "axios": "0.21.1",
     "babel-loader": "8.2.2",
