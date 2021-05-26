@@ -32,7 +32,7 @@
     "@babel/preset-flow": "7.13.13",
     "@babel/preset-react": "7.13.13",
     "@smokku/plate": "1.1.2",
-    "autoprefixer": "9.8.6",
+    "autoprefixer": "10.2.6",
     "axios": "0.21.1",
     "babel-loader": "8.2.2",
     "css-loader": "3.6.0",
