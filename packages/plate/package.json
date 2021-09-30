@@ -40,7 +40,7 @@
     "rollup-plugin-babel": "4.4.0"
   },
   "dependencies": {
-    "axios": "^0.21.0",
+    "axios": "^0.21.4",
     "lodash": "^4.17.19",
     "normalizr": "^3.5.0",
     "redux": "^4.0.5",
